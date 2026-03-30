@@ -1,0 +1,48 @@
+{
+  "app": { "title": "Yinian ERP" },
+  "nav": {
+    "dashboard": "لوحة القيادة", "warehouses": "إدارة المستودعات", "inventory": "إدارة المخزون",
+    "inbound": "إدارة الوارد", "outbound": "إدارة الصادر", "orders": "إدارة الطلبات",
+    "suppliers": "الموردون", "users": "إدارة المستخدمين", "reports": "التقارير",
+    "settings": "إعدادات النظام", "subscription": "الاشتراك والفوترة"
+  },
+  "user": { "admin": "مسؤول عام", "manager": "مدير مستودع", "operator": "مشغل", "viewer": "عرض فقط" },
+  "common": {
+    "search": "بحث", "add": "إضافة", "edit": "تعديل", "delete": "حذف", "save": "حفظ",
+    "cancel": "إلغاء", "confirm": "تأكيد", "actions": "إجراءات", "status": "الحالة",
+    "name": "الاسم", "notes": "ملاحظات", "all": "الكل", "loading": "جاري التحميل...",
+    "noData": "لا توجد بيانات", "total": "الإجمالي", "page": "صفحة", "prev": "السابق", "next": "التالي",
+    "active": "نشط", "inactive": "غير نشط", "export": "تصدير CSV"
+  },
+  "auth": {
+    "login": "تسجيل الدخول", "logout": "تسجيل الخروج", "username": "اسم المستخدم", "password": "كلمة المرور",
+    "rememberMe": "تذكرني", "forgotPassword": "هل نسيت كلمة المرور؟", "signingIn": "جاري الدخول...",
+    "loginError": "اسم المستخدم أو كلمة المرور غير صحيحة", "demoAccount": "حساب تجريبي"
+  },
+  "subscription": {
+    "title": "الاشتراك والفوترة", "subtitle": "إدارة خطتك، وفواتيرك، واستخدام رموز AI",
+    "plans": "خطط الاشتراك", "billing": "الفواتير", "apiUsage": "استخدام API",
+    "monthly": "شهري", "annual": "سنوي", "save20": "وفر 20%",
+    "currentPlan": "الخطة الحالية", "upgrade": "ترقية", "downgrade": "تخفيض",
+    "mostPopular": "الأكثر رواجاً", "billedAnnually": "يُدفع سنوياً",
+    "cancelSubscription": "إلغاء الاشتراك", "reactivate": "استعادة الاشتراك",
+    "nextRenewal": "التجديد القادم", "billedMonthly": "يُدفع شهرياً",
+    "tokenBalance": "رصيد رموز AI", "remaining": "المتبقي", "used": "المستخدم",
+    "totalTokens": "الإجمالي", "includedInPlan": "مشمول في الخطة", "extraPurchased": "تم شراؤه إضافياً",
+    "overagePrice": "سعر التجاوز", "buyMoreTokens": "شراء رموز",
+    "unlimitedTokens": "رموز غير محدودة", "tokensPerMonth": "رمز / شهر",
+    "overage": "تجاوز", "tokens": "رمز",
+    "verifyEmail": "يرجى التحقق من بريدك الإلكتروني لتأمين حسابك",
+    "sendCode": "إرسال الكود", "verifyTitle": "التحقق من البريد", "verifySubtitle": "أدخل الكود المكون من 6 أرقام المرسل لبريدك",
+    "verify": "تحقق", "alreadyVerified": "تم التحقق",
+    "billingHistory": "سجل الفواتير", "noBillingRecords": "لا توجد سجلات فواتير",
+    "date": "التاريخ", "description": "الوصف", "amount": "المبلغ", "type": "النوع",
+    "simulateCall": "محاكاة مكالمة AI", "simulateSubtitle": "محاكاة مكالمات AI API وتتبع استهلاك الرموز",
+    "chooseModel": "اختر النموذج", "inputTokens": "رموز الإدخال", "outputTokens": "رموز الإخراج",
+    "estimatedCost": "التكلفة التقديرية", "totalTokensLabel": "إجمالي الرموز", "runApiCall": "بدء المكالمة",
+    "callHistory": "سجل المكالمات", "runSimulationHint": "ستظهر النتائج هنا بعد المحاكاة",
+    "buyMoreDesc": "شراء رموز إضافية لا تنتهي صلاحيتها أبداً",
+    "chargedPer1k": "يتم تحصيل الرسوم لكل 1000 رمز",
+    "mo": "شهر", "per1kTokens": "/ 1000 رمز"
+  }
+}
