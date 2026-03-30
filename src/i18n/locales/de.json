@@ -1,0 +1,48 @@
+{
+  "app": { "title": "Yinian ERP" },
+  "nav": {
+    "dashboard": "Dashboard", "warehouses": "Lagerverwaltung", "inventory": "Inventar",
+    "inbound": "Wareneingang", "outbound": "Warenausgang", "orders": "Aufträge",
+    "suppliers": "Lieferanten", "users": "Benutzer", "reports": "Berichte",
+    "settings": "Einstellungen", "subscription": "Abonnement"
+  },
+  "user": { "admin": "Super-Administrator", "manager": "Lagermanager", "operator": "Bediener", "viewer": "Betrachter" },
+  "common": {
+    "search": "Suchen", "add": "Hinzufügen", "edit": "Bearbeiten", "delete": "Löschen", "save": "Speichern",
+    "cancel": "Abbrechen", "confirm": "Bestätigen", "actions": "Aktionen", "status": "Status",
+    "name": "Name", "notes": "Hinweise", "all": "Alle", "loading": "Laden...",
+    "noData": "Keine Daten verfügbar", "total": "Gesamt", "page": "Seite", "prev": "Vorherige", "next": "Nächste",
+    "active": "Aktiv", "inactive": "Inaktiv", "export": "Exportieren CSV"
+  },
+  "auth": {
+    "login": "Anmelden", "logout": "Abmelden", "username": "Benutzername", "password": "Passwort",
+    "rememberMe": "Angemeldet bleiben", "forgotPassword": "Passwort vergessen?", "signingIn": "Anmeldung...",
+    "loginError": "Benutzername oder Passwort ungültig", "demoAccount": "Demo-Konto"
+  },
+  "subscription": {
+    "title": "Abonnement & Abrechnung", "subtitle": "Verwalten Sie Plan, Rechnungen und AI-Token-Nutzung",
+    "plans": "Pläne", "billing": "Abrechnung", "apiUsage": "API-Nutzung",
+    "monthly": "Monatlich", "annual": "Jährlich", "save20": "Sparen Sie 20%",
+    "currentPlan": "Aktueller Plan", "upgrade": "Upgrade", "downgrade": "Downgrade",
+    "mostPopular": "Am beliebtesten", "billedAnnually": "Jährlich abgerechnet",
+    "cancelSubscription": "Abonnement kündigen", "reactivate": "Reaktivieren",
+    "nextRenewal": "Nächste Verlängerung", "billedMonthly": "Monatlich abgerechnet",
+    "tokenBalance": "AI-Token-Guthaben", "remaining": "Verbleibend", "used": "Verbraucht",
+    "totalTokens": "Gesamt", "includedInPlan": "Im Plan enthalten", "extraPurchased": "Zusätzlich gekauft",
+    "overagePrice": "Zusatzkosten pro Token", "buyMoreTokens": "Token kaufen",
+    "unlimitedTokens": "Unbegrenzte Token", "tokensPerMonth": "Token / Monat",
+    "overage": "Mehrverbrauch", "tokens": "Token",
+    "verifyEmail": "Bitte verifizieren Sie Ihre E-Mail, um Ihr Konto zu schützen",
+    "sendCode": "Code senden", "verifyTitle": "E-Mail verifizieren", "verifySubtitle": "Geben Sie den 6-stelligen Code ein, der an Ihre E-Mail gesendet wurde",
+    "verify": "Verifizieren", "alreadyVerified": "Verifiziert",
+    "billingHistory": "Rechnungsverlauf", "noBillingRecords": "Keine Rechnungen gefunden",
+    "date": "Datum", "description": "Beschreibung", "amount": "Betrag", "type": "Typ",
+    "simulateCall": "KI-Anruf simulieren", "simulateSubtitle": "Simulieren Sie KI-API-Anrufe und verfolgen Sie den Token-Verbrauch",
+    "chooseModel": "Modell wählen", "inputTokens": "Eingabe-Token", "outputTokens": "Ausgabe-Token",
+    "estimatedCost": "Geschätzte Kosten", "totalTokensLabel": "Gesamt-Token", "runApiCall": "API-Anruf ausführen",
+    "callHistory": "Verlauf der Anrufe", "runSimulationHint": "Ergebnisse erscheinen hier nach der Simulation",
+    "buyMoreDesc": "Kaufen Sie zusätzliche Token, die nie ablaufen",
+    "chargedPer1k": "Ihr Plan rechnet pro 1000 Token ab",
+    "mo": "Monat", "per1kTokens": "/ 1000 Token"
+  }
+}
