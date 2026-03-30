@@ -1,0 +1,48 @@
+{
+  "app": { "title": "Yinian ERP" },
+  "nav": {
+    "dashboard": "Dashboard", "warehouses": "Warehouses", "inventory": "Inventory",
+    "inbound": "Inbound", "outbound": "Outbound", "orders": "Orders",
+    "suppliers": "Suppliers", "users": "Users", "reports": "Reports",
+    "settings": "Settings", "subscription": "Subscription"
+  },
+  "user": { "admin": "Super Admin", "manager": "Warehouse Manager", "operator": "Operator", "viewer": "Viewer" },
+  "common": {
+    "search": "Search", "add": "Add", "edit": "Edit", "delete": "Delete", "save": "Save",
+    "cancel": "Cancel", "confirm": "Confirm", "actions": "Actions", "status": "Status",
+    "name": "Name", "notes": "Notes", "all": "All", "loading": "Loading...",
+    "noData": "No data available", "total": "Total", "page": "Page", "prev": "Previous", "next": "Next",
+    "active": "Active", "inactive": "Inactive", "export": "Export CSV"
+  },
+  "auth": {
+    "login": "Sign In", "logout": "Logout", "username": "Username", "password": "Password",
+    "rememberMe": "Remember Me", "forgotPassword": "Forgot Password?", "signingIn": "Signing in...",
+    "loginError": "Invalid username or password", "demoAccount": "Demo Account"
+  },
+  "subscription": {
+    "title": "Subscription & Billing", "subtitle": "Manage your plan, billing, and AI Token usage",
+    "plans": "Plans", "billing": "Billing", "apiUsage": "API Usage",
+    "monthly": "Monthly", "annual": "Annual", "save20": "Save 20%",
+    "currentPlan": "Current Plan", "upgrade": "Upgrade", "downgrade": "Downgrade",
+    "mostPopular": "Most Popular", "billedAnnually": "Billed Annually",
+    "cancelSubscription": "Cancel Subscription", "reactivate": "Reactivate",
+    "nextRenewal": "Next Renewal", "billedMonthly": "Billed Monthly",
+    "tokenBalance": "AI Token Balance", "remaining": "Remaining", "used": "Used",
+    "totalTokens": "Total", "includedInPlan": "Included in Plan", "extraPurchased": "Extra Purchased",
+    "overagePrice": "Overage Price", "buyMoreTokens": "Buy Tokens",
+    "unlimitedTokens": "Unlimited Tokens", "tokensPerMonth": "Tokens / mo",
+    "overage": "Overage", "tokens": "Tokens",
+    "verifyEmail": "Please verify your email to secure your account",
+    "sendCode": "Send Code", "verifyTitle": "Verify Email", "verifySubtitle": "Enter the 6-digit code sent to your email",
+    "verify": "Verify", "alreadyVerified": "Verified",
+    "billingHistory": "Billing History", "noBillingRecords": "No billing records found",
+    "date": "Date", "description": "Description", "amount": "Amount", "type": "Type",
+    "simulateCall": "Simulate AI Call", "simulateSubtitle": "Simulate AI API calls and track Token usage",
+    "chooseModel": "Select Model", "inputTokens": "Input Tokens", "outputTokens": "Output Tokens",
+    "estimatedCost": "Estimated Cost", "totalTokensLabel": "Total Tokens", "runApiCall": "Run API Call",
+    "callHistory": "Call History", "runSimulationHint": "Results will appear here after running a simulation",
+    "buyMoreDesc": "Buy additional tokens that never expire",
+    "chargedPer1k": "Your plan charges per 1000 Tokens",
+    "mo": "mo", "per1kTokens": "/ 1000 Tokens"
+  }
+}
