@@ -1,0 +1,48 @@
+{
+  "app": { "title": "Yinian ERP" },
+  "nav": {
+    "dashboard": "Tableau de bord", "warehouses": "Entrepôts", "inventory": "Inventaire",
+    "inbound": "Entrées", "outbound": "Sorties", "orders": "Commandes",
+    "suppliers": "Fournisseurs", "users": "Utilisateurs", "reports": "Rapports",
+    "settings": "Paramètres", "subscription": "Abonnement"
+  },
+  "user": { "admin": "Super Admin", "manager": "Gestionnaire", "operator": "Opérateur", "viewer": "Lecteur" },
+  "common": {
+    "search": "Rechercher", "add": "Ajouter", "edit": "Modifier", "delete": "Supprimer", "save": "Enregistrer",
+    "cancel": "Annuler", "confirm": "Confirmer", "actions": "Actions", "status": "Statut",
+    "name": "Nom", "notes": "Notes", "all": "Tout", "loading": "Chargement...",
+    "noData": "Aucune donnée", "total": "Total", "page": "Page", "prev": "Précédent", "next": "Suivant",
+    "active": "Actif", "inactive": "Inactif", "export": "Exporter CSV"
+  },
+  "auth": {
+    "login": "Connexion", "logout": "Déconnexion", "username": "Utilisateur", "password": "Mot de passe",
+    "rememberMe": "Se souvenir de moi", "forgotPassword": "Mot de passe oublié ?", "signingIn": "Connexion...",
+    "loginError": "Utilisateur ou mot de passe incorrect", "demoAccount": "Compte de démo"
+  },
+  "subscription": {
+    "title": "Abonnement et Facturation", "subtitle": "Gérez votre forfait, vos factures et l'usage des jetons AI",
+    "plans": "Forfaits", "billing": "Facturation", "apiUsage": "Usage API",
+    "monthly": "Mensuel", "annual": "Annuel", "save20": "Économisez 20%",
+    "currentPlan": "Forfait actuel", "upgrade": "Améliorer", "downgrade": "Rétrograder",
+    "mostPopular": "Le plus populaire", "billedAnnually": "Facturé annuellement",
+    "cancelSubscription": "Résilier l'abonnement", "reactivate": "Réactiver",
+    "nextRenewal": "Prochain renouvellement", "billedMonthly": "Facturé mensuellement",
+    "tokenBalance": "Solde de jetons AI", "remaining": "Restant", "used": "Utilisé",
+    "totalTokens": "Total", "includedInPlan": "Inclus dans le forfait", "extraPurchased": "Acheté en plus",
+    "overagePrice": "Prix de dépassement", "buyMoreTokens": "Acheter des jetons",
+    "unlimitedTokens": "Jetons illimités", "tokensPerMonth": "Jetons / mois",
+    "overage": "Dépassement", "tokens": "Jetons",
+    "verifyEmail": "Veuillez vérifier votre email pour sécuriser votre compte",
+    "sendCode": "Envoyer le code", "verifyTitle": "Vérifier l'email", "verifySubtitle": "Entrez le code à 6 chiffres envoyé à votre email",
+    "verify": "Vérifier", "alreadyVerified": "Vérifié",
+    "billingHistory": "Historique de facturation", "noBillingRecords": "Aucun enregistrement de facturation",
+    "date": "Date", "description": "Description", "amount": "Montant", "type": "Type",
+    "simulateCall": "Simuler un appel AI", "simulateSubtitle": "Simulez des appels API AI et suivez l'usage des jetons",
+    "chooseModel": "Choisir le modèle", "inputTokens": "Jetons d'entrée", "outputTokens": "Jetons de sortie",
+    "estimatedCost": "Coût estimé", "totalTokensLabel": "Jetons totaux", "runApiCall": "Lancer l'appel API",
+    "callHistory": "Historique des appels", "runSimulationHint": "Les résultats apparaîtront ici après la simulation",
+    "buyMoreDesc": "Achetez des jetons supplémentaires sans date d'expiration",
+    "chargedPer1k": "Votre forfait facture pour 1000 jetons",
+    "mo": "mois", "per1kTokens": "/ 1000 jetons"
+  }
+}
