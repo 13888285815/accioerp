@@ -7,14 +7,14 @@ import {
   AlertTriangle,
   X,
   ChevronRight,
-  ShieldCheck,
+  Shield,
   ArrowRight,
   Database,
   Cpu,
   Mail,
   Lock,
   ArrowUpRight,
-  BarChart3,
+  BarChart,
   Globe,
   Settings,
   CreditCard,
@@ -281,7 +281,7 @@ const SubscriptionPage: React.FC = () => {
                       state.emailVerification === 'verified' ? 'bg-green-500/10' : 'bg-amber-500/10'
                     }`}>
                       {state.emailVerification === 'verified' 
-                        ? <ShieldCheck className="w-8 h-8 text-green-600" /> 
+                        ? <Shield className="w-8 h-8 text-green-600" /> 
                         : <Mail className="w-8 h-8 text-amber-600" />}
                     </div>
                     <div>
@@ -484,7 +484,7 @@ const SubscriptionPage: React.FC = () => {
           <div className="bg-white rounded-[2.5rem] p-12 max-w-md w-full shadow-2xl animate-in zoom-in-95 duration-300">
             <div className="flex flex-col items-center text-center mb-10">
               <div className="w-20 h-20 bg-blue-50 rounded-3xl flex items-center justify-center mb-8">
-                <ShieldCheck className="w-10 h-10 text-blue-600" />
+                <Shield className="w-10 h-10 text-blue-600" />
               </div>
               <h3 className="text-2xl font-black text-gray-900 mb-4">验证您的邮箱</h3>
               <p className="text-sm text-gray-400 font-medium">

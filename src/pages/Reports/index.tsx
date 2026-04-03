@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { Download, BarChart2, Package, TrendingUp, TrendingDown, Calendar, Warehouse as WarehouseIcon } from 'lucide-react';
+import { Download, BarChart, Package, TrendingUp, TrendingDown, Calendar, Warehouse as WarehouseIcon } from 'lucide-react';
 import { store } from '../../store';
 import { useRefresh } from '../../store/reactive';
 
@@ -177,7 +177,7 @@ const ReportsPage: React.FC = () => {
           { id: 'inventory', name: '库存报表', icon: Package },
           { id: 'inbound', name: '入库报表', icon: TrendingUp },
           { id: 'outbound', name: '出库报表', icon: TrendingDown },
-          { id: 'orders', name: '订单报表', icon: BarChart2 },
+          { id: 'orders', name: '订单报表', icon: BarChart },
         ].map(tab => (
           <button
             key={tab.id}
@@ -414,7 +414,7 @@ const ReportsPage: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="bg-white p-6 rounded-xl border border-gray-100 shadow-sm flex items-center gap-4">
               <div className="w-12 h-12 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center">
-                <BarChart2 size={24} />
+                <BarChart size={24} />
               </div>
               <div>
                 <p className="text-sm text-gray-500">订单总数</p>

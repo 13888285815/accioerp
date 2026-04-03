@@ -5,7 +5,6 @@ import { ToastContainer } from './components/ui/Toast';
 import { store } from './store';
 import { injectCSPMeta } from './utils/security';
 import { User } from './types';
-import './i18n';
 
 // WMS Pages
 import DashboardPage from './pages/Dashboard';

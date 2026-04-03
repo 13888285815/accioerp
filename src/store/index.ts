@@ -279,5 +279,13 @@ class Store {
   }
 }
 
-export const store = new Store();
-export { generateId };
+let store: Store;
+try {
+  store = new Store();
+} catch (e) {
+  console.error('[store/index] 初始化失败，使用空数据:', e);
+  // 清除可能损坏的 localStorage 数据后重试
+  try { localStorage.removeItem('wms_data'); } catch {}
+  store = new Store();
+}
+export { store, generateId };

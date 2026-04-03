@@ -30,8 +30,21 @@ html { font-size: clamp(13px, 1.5vw, 16px); }
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  /* 系统通用字体栈：优先使用各平台内置字体，无需加载任何外部字体 */
+  /* macOS/iOS: PingFang SC / SF Pro | Windows: Microsoft YaHei | Android/HarmonyOS: Noto Sans CJK */
+  font-family:
+    -apple-system,          /* macOS/iOS SF Pro */
+    BlinkMacSystemFont,     /* Chrome on macOS */
+    'PingFang SC',          /* macOS/iOS 中文 */
+    'Hiragino Sans GB',     /* macOS 旧版中文 */
+    'Microsoft YaHei',      /* Windows 中文 */
+    'Microsoft JhengHei',   /* Windows 繁体 */
+    'Noto Sans CJK SC',     /* Android/Linux 简体中文 */
+    'Noto Sans SC',         /* Android 简体中文 */
+    'Source Han Sans SC',   /* Adobe 思源黑体 */
+    'Segoe UI',             /* Windows 英文 */
+    'Helvetica Neue',       /* macOS 英文 */
+    Arial,                  /* 通用备选 */
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

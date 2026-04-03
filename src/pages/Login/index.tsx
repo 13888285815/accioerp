@@ -3,7 +3,7 @@ import { User } from '../../types';
 import { store } from '../../store';
 import { Button } from '../../components/ui/Button';
 import { Input } from '../../components/ui/Input';
-import { LogIn, ShieldCheck, User as UserIcon, Lock, AlertCircle } from 'lucide-react';
+import { LogIn, Shield, User as UserIcon, Lock, AlertCircle } from 'lucide-react';
 
 interface LoginProps {
   onLogin: (user: User) => void;
@@ -77,7 +77,7 @@ const LoginPage: React.FC<LoginProps> = ({ onLogin }) => {
           <div className="p-10">
             <div className="flex flex-col items-center mb-10">
               <div className="w-20 h-20 bg-gradient-to-tr from-blue-500 to-indigo-600 rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-blue-500/20">
-                <ShieldCheck size={42} className="text-white" />
+                <Shield size={42} className="text-white" />
               </div>
               <h1 className="text-3xl font-bold text-white tracking-tight">意念ERP</h1>
               <p className="text-white/50 text-sm mt-2">新一代云端企业资源管理系统</p>

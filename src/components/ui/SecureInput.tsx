@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
-import { AlertCircle, CheckCircle2 } from 'lucide-react';
+import React, { useState } from 'react';
+import { AlertCircle, CheckCircle } from 'lucide-react';
 import {
   guardInput,
   sanitizeEmail,
@@ -26,83 +25,101 @@ export const SecureInput: React.FC<SecureInputProps> = ({
   className = '',
   ...props
 }) => {
-  const { t } = useTranslation();
   const [internalError, setInternalError] = useState<string | null>(null);
   const [strength, setStrength] = useState<PasswordStrength | null>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const val = e.target.value;
     let isSafe = true;
-    let msg = null;
+    let msg: string | null = null;
 
-    // Injection detection
     const guard = guardInput(val);
     if (!guard.safe) {
       isSafe = false;
-      msg = '⚠ Invalid characters detected';
+      msg = '⚠ 检测到非法字符';
     }
 
-    // Email validation
     if (type === 'email' && val) {
       if (!isValidEmail(sanitizeEmail(val))) {
-        msg = t('Invalid email format');
+        msg = '邮箱格式不正确';
         isSafe = false;
       }
     }
 
-    // Password strength
     if (type === 'password' && showStrength) {
       setStrength(checkPasswordStrength(val));
     }
 
     setInternalError(msg);
-    if (onChange) onChange(e);
-    if (onSafeChange) onSafeChange(val, isSafe);
+    onSafeChange?.(val, isSafe);
+    onChange?.(e);
   };
 
   const error = externalError || internalError;
 
+  const strengthColors: Record<string, string> = {
+    weak: 'bg-red-500',
+    fair: 'bg-yellow-500',
+    good: 'bg-blue-500',
+    strong: 'bg-green-500',
+  };
+
+  const strengthLabels: Record<string, string> = {
+    weak: '弱',
+    fair: '一般',
+    good: '良好',
+    strong: '强',
+  };
+
   return (
-    <div className="flex flex-col gap-1.5 w-full">
+    <div className="space-y-1">
       {label && (
-        <label className="text-sm font-medium text-gray-700">
-          {label}
-        </label>
+        <label className="block text-sm font-medium text-gray-700">{label}</label>
       )}
       <div className="relative">
         <input
           type={type}
           onChange={handleChange}
-          className={`
-            w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all
-            ${error ? 'border-red-500 bg-red-50' : 'border-gray-300'}
-            ${className}
-          `}
+          className={`w-full px-3 py-2 border rounded-lg text-sm transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+            error
+              ? 'border-red-300 bg-red-50 focus:ring-red-400'
+              : 'border-gray-300 bg-white'
+          } ${className}`}
           {...props}
         />
         {error && (
-          <div className="absolute right-3 top-2.5 text-red-500">
-            <AlertCircle className="w-4 h-4" />
+          <div className="absolute inset-y-0 right-3 flex items-center">
+            <AlertCircle size={16} className="text-red-500" />
+          </div>
+        )}
+        {!error && props.value && type === 'email' && (
+          <div className="absolute inset-y-0 right-3 flex items-center">
+            <CheckCircle size={16} className="text-green-500" />
           </div>
         )}
       </div>
-
-      {error && <p className="text-xs text-red-500 mt-1">{error}</p>}
-
-      {type === 'password' && showStrength && strength && (
-        <div className="mt-2 space-y-1.5">
-          <div className="flex gap-1 h-1">
-            {[0, 1, 2, 3].map((i) => (
+      {error && (
+        <p className="text-xs text-red-600 flex items-center gap-1">
+          <AlertCircle size={12} />
+          {error}
+        </p>
+      )}
+      {strength && showStrength && (
+        <div className="space-y-1">
+          <div className="flex gap-1">
+            {(['weak', 'fair', 'good', 'strong'] as const).map((level, i) => (
               <div
-                key={i}
-                className={`flex-1 rounded-full transition-colors ${
-                  i < strength.score ? strength.color : 'bg-gray-200'
+                key={level}
+                className={`h-1 flex-1 rounded-full transition-colors ${
+                  ['weak', 'fair', 'good', 'strong'].indexOf(strength.level) >= i
+                    ? strengthColors[strength.level]
+                    : 'bg-gray-200'
                 }`}
               />
             ))}
           </div>
-          <p className="text-[10px] text-gray-500 font-medium uppercase tracking-wider">
-            {strength.label}
+          <p className="text-xs text-gray-500">
+            密码强度：<span className="font-medium">{strengthLabels[strength.level]}</span>
           </p>
         </div>
       )}
@@ -112,35 +129,36 @@ export const SecureInput: React.FC<SecureInputProps> = ({
 
 interface SecureSelectProps extends React.SelectHTMLAttributes<HTMLSelectElement> {
   label?: string;
-  options: { value: string; label: string }[];
   error?: string;
+  children: React.ReactNode;
 }
 
 export const SecureSelect: React.FC<SecureSelectProps> = ({
   label,
-  options,
   error,
+  children,
   className = '',
   ...props
 }) => {
   return (
-    <div className="flex flex-col gap-1.5 w-full">
-      {label && <label className="text-sm font-medium text-gray-700">{label}</label>}
+    <div className="space-y-1">
+      {label && (
+        <label className="block text-sm font-medium text-gray-700">{label}</label>
+      )}
       <select
-        className={`
-          w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all bg-white
-          ${error ? 'border-red-500 bg-red-50' : 'border-gray-300'}
-          ${className}
-        `}
+        className={`w-full px-3 py-2 border rounded-lg text-sm transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+          error ? 'border-red-300 bg-red-50' : 'border-gray-300 bg-white'
+        } ${className}`}
         {...props}
       >
-        {options.map((opt) => (
-          <option key={opt.value} value={opt.value}>
-            {opt.label}
-          </option>
-        ))}
+        {children}
       </select>
-      {error && <p className="text-xs text-red-500 mt-1">{error}</p>}
+      {error && (
+        <p className="text-xs text-red-600 flex items-center gap-1">
+          <AlertCircle size={12} />
+          {error}
+        </p>
+      )}
     </div>
   );
 };
@@ -148,63 +166,48 @@ export const SecureSelect: React.FC<SecureSelectProps> = ({
 interface SecureTextareaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
   label?: string;
   error?: string;
-  maxLength?: number;
   onSafeChange?: (value: string, isClean: boolean) => void;
 }
 
 export const SecureTextarea: React.FC<SecureTextareaProps> = ({
   label,
   error: externalError,
-  maxLength,
   onSafeChange,
   onChange,
   className = '',
   ...props
 }) => {
   const [internalError, setInternalError] = useState<string | null>(null);
-  const [charCount, setCharCount] = useState(0);
 
   const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const val = e.target.value;
-    setCharCount(val.length);
-
     const guard = guardInput(val);
-    let isSafe = true;
-    let msg = null;
-
-    if (!guard.safe) {
-      isSafe = false;
-      msg = '⚠ Invalid characters detected';
-    }
-
+    const msg = guard.safe ? null : '⚠ 检测到非法字符';
     setInternalError(msg);
-    if (onChange) onChange(e);
-    if (onSafeChange) onSafeChange(val, isSafe);
+    onSafeChange?.(val, guard.safe);
+    onChange?.(e);
   };
 
   const error = externalError || internalError;
 
   return (
-    <div className="flex flex-col gap-1.5 w-full">
-      <div className="flex justify-between items-center">
-        {label && <label className="text-sm font-medium text-gray-700">{label}</label>}
-        {maxLength && (
-          <span className="text-xs text-gray-400">
-            {charCount}/{maxLength}
-          </span>
-        )}
-      </div>
+    <div className="space-y-1">
+      {label && (
+        <label className="block text-sm font-medium text-gray-700">{label}</label>
+      )}
       <textarea
         onChange={handleChange}
-        maxLength={maxLength}
-        className={`
-          w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all min-h-[100px]
-          ${error ? 'border-red-500 bg-red-50' : 'border-gray-300'}
-          ${className}
-        `}
+        className={`w-full px-3 py-2 border rounded-lg text-sm transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none ${
+          error ? 'border-red-300 bg-red-50' : 'border-gray-300 bg-white'
+        } ${className}`}
         {...props}
       />
-      {error && <p className="text-xs text-red-500 mt-1">{error}</p>}
+      {error && (
+        <p className="text-xs text-red-600 flex items-center gap-1">
+          <AlertCircle size={12} />
+          {error}
+        </p>
+      )}
     </div>
   );
 };

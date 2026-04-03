@@ -95,8 +95,13 @@ class SubscriptionStore {
   private state: SubscriptionState;
 
   constructor() {
-    const saved = localStorage.getItem(STORAGE_KEY);
-    this.state = saved ? JSON.parse(saved) : defaultState();
+    try {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      this.state = saved ? JSON.parse(saved) : defaultState();
+    } catch {
+      localStorage.removeItem(STORAGE_KEY);
+      this.state = defaultState();
+    }
   }
 
   private save() { localStorage.setItem(STORAGE_KEY, JSON.stringify(this.state)); }
@@ -250,4 +255,12 @@ class SubscriptionStore {
   }
 }
 
-export const subscriptionStore = new SubscriptionStore();
+let subscriptionStore: SubscriptionStore;
+try {
+  subscriptionStore = new SubscriptionStore();
+} catch (e) {
+  console.error('[store/subscription] 初始化失败，使用空数据:', e);
+  try { localStorage.removeItem('wms_subscription'); } catch {}
+  subscriptionStore = new SubscriptionStore();
+}
+export { subscriptionStore };

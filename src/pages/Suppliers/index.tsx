@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { Plus, Search, Edit2, Trash2, Building, Phone, Mail } from 'lucide-react';
+import { Plus, Search, Pencil, Trash, Building, Phone, Mail } from 'lucide-react';
 import { store } from '../../store';
 import { Supplier, StatusActive } from '../../types';
 import { Button } from '../../components/ui/Button';
@@ -173,13 +173,13 @@ const SuppliersPage: React.FC = () => {
                         onClick={() => handleOpenModal(supplier)}
                         className="p-1.5 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
                       >
-                        <Edit2 size={16} />
+                        <Pencil size={16} />
                       </button>
                       <button 
                         onClick={() => handleDelete(supplier.id)}
                         className="p-1.5 text-red-600 hover:bg-red-50 rounded-lg transition-colors"
                       >
-                        <Trash2 size={16} />
+                        <Trash size={16} />
                       </button>
                     </div>
                   </td>

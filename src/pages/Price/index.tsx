@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Tag, Plus, Search, Edit2, Trash2, TrendingUp, TrendingDown, DollarSign } from 'lucide-react';
+import { Tag, Plus, Search, Pencil, Trash, TrendingUp, TrendingDown, DollarSign } from 'lucide-react';
 import { useRefresh } from '../../store/reactive';
 
 interface PriceItem {
@@ -160,8 +160,8 @@ export default function PricePage() {
                     <td className="px-4 py-3 text-gray-500">{item.effectDate}</td>
                     <td className="px-4 py-3"><span className={`px-2 py-1 rounded-lg text-xs font-medium ${statusColor[item.status]}`}>{item.status}</span></td>
                     <td className="px-4 py-3 flex gap-1">
-                      <button onClick={() => openEdit(item)} className="p-1.5 text-gray-400 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"><Edit2 size={14} /></button>
-                      <button onClick={() => handleDelete(item.id)} className="p-1.5 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors"><Trash2 size={14} /></button>
+                      <button onClick={() => openEdit(item)} className="p-1.5 text-gray-400 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"><Pencil size={14} /></button>
+                      <button onClick={() => handleDelete(item.id)} className="p-1.5 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors"><Trash size={14} /></button>
                     </td>
                   </tr>
                 );

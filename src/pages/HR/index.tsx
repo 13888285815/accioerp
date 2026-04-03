@@ -1,13 +1,13 @@
 import React, { useState, useMemo } from 'react';
 import { 
   Users, 
-  Building2, 
+  Building, 
   CalendarCheck, 
   Banknote, 
   Plus, 
   Search, 
   Edit, 
-  Trash2, 
+  Trash, 
   UserPlus,
   ChevronLeft,
   ChevronRight,
@@ -163,7 +163,7 @@ const HRPage: React.FC = () => {
             onClick={() => setActiveTab('departments')}
             className={`flex items-center gap-2 px-4 py-2 rounded-md text-sm transition-all ${activeTab === 'departments' ? 'bg-blue-600 text-white shadow-md' : 'text-gray-600 hover:bg-gray-100'}`}
           >
-            <Building2 size={18} /> 部门管理
+            <Building size={18} /> 部门管理
           </button>
           <button 
             onClick={() => setActiveTab('attendance')}
@@ -250,7 +250,7 @@ const HRPage: React.FC = () => {
                     </td>
                     <td className="px-6 py-4 text-right space-x-2">
                       <button onClick={() => { setEditingEmp(emp); setIsEmpModalOpen(true); }} className="text-blue-600 hover:text-blue-800"><Edit size={16}/></button>
-                      <button onClick={() => handleDelete('employee', emp.id)} className="text-red-600 hover:text-red-800"><Trash2 size={16}/></button>
+                      <button onClick={() => handleDelete('employee', emp.id)} className="text-red-600 hover:text-red-800"><Trash size={16}/></button>
                     </td>
                   </tr>
                 ))}
@@ -316,7 +316,7 @@ const HRPage: React.FC = () => {
                     <Edit size={14} /> 编辑
                   </Button>
                   <Button variant="ghost" size="sm" className="text-red-600" onClick={() => handleDelete('department', dept.id)}>
-                    <Trash2 size={14} /> 删除
+                    <Trash size={14} /> 删除
                   </Button>
                 </div>
               </div>
@@ -390,7 +390,7 @@ const HRPage: React.FC = () => {
                     <td className="px-6 py-4 text-gray-500 truncate max-w-[150px]">{att.notes}</td>
                     <td className="px-6 py-4 text-right">
                       <button onClick={() => handleDelete('attendance', att.id)} className="text-red-600 hover:text-red-800">
-                        <Trash2 size={16}/>
+                        <Trash size={16}/>
                       </button>
                     </td>
                   </tr>
@@ -484,7 +484,7 @@ const HRPage: React.FC = () => {
                     </td>
                     <td className="px-6 py-4 text-right space-x-2">
                       <button onClick={() => { setEditingPayroll(p); setIsPayrollModalOpen(true); }} className="text-blue-600 hover:text-blue-800"><Edit size={16}/></button>
-                      <button onClick={() => handleDelete('payroll', p.id)} className="text-red-600 hover:text-red-800"><Trash2 size={16}/></button>
+                      <button onClick={() => handleDelete('payroll', p.id)} className="text-red-600 hover:text-red-800"><Trash size={16}/></button>
                     </td>
                   </tr>
                 ))}

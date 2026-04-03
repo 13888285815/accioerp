@@ -286,5 +286,12 @@ class ERPStore {
   deleteWorkOrder(id: string) { this.state.workOrders = this.state.workOrders.filter(w => w.id !== id); this.save(); }
 }
 
-export const erpStore = new ERPStore();
-export { thisMonth };
+let erpStore: ERPStore;
+try {
+  erpStore = new ERPStore();
+} catch (e) {
+  console.error('[store/erp] 初始化失败，使用空数据:', e);
+  try { localStorage.removeItem('erp_data'); } catch {}
+  erpStore = new ERPStore();
+}
+export { erpStore, thisMonth };

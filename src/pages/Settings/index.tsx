@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
-import { Settings, Database, Globe, Download, Upload, RefreshCw, Info, Shield } from 'lucide-react';
+import { Settings, Database, Download, Upload, RefreshCw, Info, Shield } from 'lucide-react';
 import { store } from '../../store';
-import { LANGUAGES } from '../../i18n';
-import i18n from '../../i18n';
 
 export const SettingsPage: React.FC = () => {
   const [message, setMessage] = useState('');
@@ -54,18 +52,10 @@ export const SettingsPage: React.FC = () => {
     }
   };
 
-  const handleLangChange = (code: string) => {
-    i18n.changeLanguage(code);
-    localStorage.setItem('wms_language', code);
-    const lang = LANGUAGES.find(l => l.code === code);
-    document.documentElement.dir = lang?.dir || 'ltr';
-    showMsg(`语言已切换为: ${lang?.label}`);
-  };
-
   return (
     <div className="p-4 md:p-8 max-w-4xl mx-auto space-y-6">
       {message && (
-        <div className="fixed top-20 right-4 md:right-8 bg-blue-600 text-white px-6 py-3 rounded-xl shadow-2xl z-50 animate-in fade-in slide-in-from-top-4 duration-300">
+        <div className="fixed top-20 right-4 md:right-8 bg-blue-600 text-white px-6 py-3 rounded-xl shadow-2xl z-50">
           <div className="flex items-center gap-2 font-medium">
             <Info size={18} />
             {message}
@@ -75,61 +65,8 @@ export const SettingsPage: React.FC = () => {
 
       <div className="flex flex-col gap-1 mb-2">
         <h1 className="text-2xl font-bold text-gray-900">系统设置</h1>
-        <p className="text-gray-500 text-sm">管理您的账户首选项、数据备份和系统配置</p>
+        <p className="text-gray-500 text-sm">管理账户首选项、数据备份和系统配置</p>
       </div>
-
-      {/* 常规设置 */}
-      <section className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
-        <div className="px-6 py-4 border-b border-gray-50 flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600">
-            <Globe size={20} />
-          </div>
-          <div>
-            <h2 className="font-bold text-gray-900">常规设置</h2>
-            <p className="text-xs text-gray-400">显示语言、时区与日期格式</p>
-          </div>
-        </div>
-        <div className="p-6 space-y-6">
-          <div className="space-y-3">
-            <label className="text-sm font-medium text-gray-700 block">界面语言</label>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2">
-              {LANGUAGES.map(lang => (
-                <button
-                  key={lang.code}
-                  onClick={() => handleLangChange(lang.code)}
-                  className={`px-3 py-2 rounded-xl text-sm transition-all border ${
-                    i18n.language === lang.code
-                      ? 'bg-blue-600 border-blue-600 text-white shadow-md shadow-blue-100'
-                      : 'bg-white border-gray-100 text-gray-600 hover:border-blue-200 hover:bg-blue-50/30'
-                  }`}
-                >
-                  {lang.label}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="space-y-3">
-              <label className="text-sm font-medium text-gray-700 block">默认时区</label>
-              <select className="w-full bg-gray-50 border-none rounded-xl px-4 py-2.5 text-sm focus:ring-2 focus:ring-blue-500">
-                <option>(GMT+08:00) 北京, 上海, 香港</option>
-                <option>(GMT+00:00) 伦敦, UTC</option>
-                <option>(GMT-05:00) 纽约, 华盛顿</option>
-                <option>(GMT+09:00) 东京, 首尔</option>
-              </select>
-            </div>
-            <div className="space-y-3">
-              <label className="text-sm font-medium text-gray-700 block">日期格式</label>
-              <select className="w-full bg-gray-50 border-none rounded-xl px-4 py-2.5 text-sm focus:ring-2 focus:ring-blue-500">
-                <option>YYYY-MM-DD (2024-03-24)</option>
-                <option>DD/MM/YYYY (24/03/2024)</option>
-                <option>MM/DD/YYYY (03/24/2024)</option>
-              </select>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* 数据管理 */}
       <section className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
@@ -146,10 +83,9 @@ export const SettingsPage: React.FC = () => {
           <div className="bg-amber-50 rounded-xl p-4 mb-6 border border-amber-100 flex gap-3">
             <Shield className="text-amber-600 flex-shrink-0" size={20} />
             <div className="text-sm text-amber-800">
-              您的数据目前存储在浏览器本地（LocalStorage）。为了防止数据丢失，建议定期导出备份。
+              数据存储在浏览器本地（LocalStorage），建议定期导出备份，防止数据丢失。
             </div>
           </div>
-          
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
             <button
               onClick={handleExport}
@@ -176,6 +112,40 @@ export const SettingsPage: React.FC = () => {
         </div>
       </section>
 
+      {/* 时区与日期格式 */}
+      <section className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+        <div className="px-6 py-4 border-b border-gray-50 flex items-center gap-3">
+          <div className="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600">
+            <Settings size={20} />
+          </div>
+          <div>
+            <h2 className="font-bold text-gray-900">显示设置</h2>
+            <p className="text-xs text-gray-400">时区与日期格式</p>
+          </div>
+        </div>
+        <div className="p-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="space-y-2">
+              <label className="text-sm font-medium text-gray-700 block">默认时区</label>
+              <select className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <option>(GMT+08:00) 北京、上海、香港</option>
+                <option>(GMT+00:00) 伦敦、UTC</option>
+                <option>(GMT-05:00) 纽约、华盛顿</option>
+                <option>(GMT+09:00) 东京、首尔</option>
+              </select>
+            </div>
+            <div className="space-y-2">
+              <label className="text-sm font-medium text-gray-700 block">日期格式</label>
+              <select className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <option>YYYY-MM-DD（2026-03-31）</option>
+                <option>DD/MM/YYYY（31/03/2026）</option>
+                <option>MM/DD/YYYY（03/31/2026）</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* 关于系统 */}
       <section className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
         <div className="px-6 py-4 border-b border-gray-50 flex items-center gap-3">
@@ -195,7 +165,7 @@ export const SettingsPage: React.FC = () => {
             </div>
             <div className="flex justify-between py-2 border-b border-gray-50">
               <span className="text-gray-500 text-sm">存储状态</span>
-              <span className="text-gray-900 font-medium text-sm">本地存储 (2.4MB / 5.0MB)</span>
+              <span className="text-gray-900 font-medium text-sm">本地存储</span>
             </div>
             <div className="flex justify-between py-2 border-b border-gray-50">
               <span className="text-gray-500 text-sm">技术架构</span>
@@ -203,7 +173,7 @@ export const SettingsPage: React.FC = () => {
             </div>
             <div className="flex justify-between py-2 border-b border-gray-50">
               <span className="text-gray-500 text-sm">数据加密</span>
-              <span className="text-gray-900 font-medium text-sm">AES-256 (本地导出)</span>
+              <span className="text-gray-900 font-medium text-sm">AES-256（本地导出）</span>
             </div>
           </div>
           <div className="mt-8 pt-6 border-t border-gray-50 text-center">

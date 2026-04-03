@@ -1,8 +1,8 @@
 import React, { useState, useMemo } from 'react';
 import { 
-  Plus, Search, Edit2, Trash2, ClipboardList, CheckCircle2, 
+  Plus, Search, Pencil, Trash, ClipboardList, CheckCircle, 
   Clock, AlertCircle, TrendingUp, Package, Truck, 
-  User, Building2, Calendar, FileText, Star,
+  User, Building, Calendar, FileText, Star,
   CheckCircle, XCircle, AlertTriangle
 } from 'lucide-react';
 import { erpStore } from '../../store/erp';
@@ -320,7 +320,7 @@ const PurchasePage: React.FC = () => {
             </div>
             <div className="bg-white p-4 rounded-xl border border-gray-100 shadow-sm flex items-center gap-4">
               <div className="w-12 h-12 rounded-lg bg-green-50 flex items-center justify-center text-green-600">
-                <CheckCircle2 size={24} />
+                <CheckCircle size={24} />
               </div>
               <div>
                 <p className="text-sm text-gray-500">已批准</p>
@@ -429,7 +429,7 @@ const PurchasePage: React.FC = () => {
                             onClick={() => handleOpenPrModal(pr)}
                             className="p-1.5 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
                           >
-                            <Edit2 size={16} />
+                            <Pencil size={16} />
                           </button>
                           <button 
                             onClick={() => {
@@ -440,7 +440,7 @@ const PurchasePage: React.FC = () => {
                             }}
                             className="p-1.5 text-red-600 hover:bg-red-50 rounded-lg transition-colors"
                           >
-                            <Trash2 size={16} />
+                            <Trash size={16} />
                           </button>
                         </div>
                       </td>
@@ -522,7 +522,7 @@ const PurchasePage: React.FC = () => {
                       <td className="px-6 py-4 font-mono text-xs font-medium text-gray-900">{po.poNo}</td>
                       <td className="px-6 py-4">
                         <div className="flex items-center gap-2">
-                          <Building2 size={16} className="text-gray-400" />
+                          <Building size={16} className="text-gray-400" />
                           <span className="text-gray-900 font-medium">{po.supplierName}</span>
                         </div>
                       </td>
@@ -549,7 +549,7 @@ const PurchasePage: React.FC = () => {
                             onClick={() => handleOpenPoModal(po)}
                             className="p-1.5 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
                           >
-                            <Edit2 size={16} />
+                            <Pencil size={16} />
                           </button>
                         </div>
                       </td>
@@ -569,7 +569,7 @@ const PurchasePage: React.FC = () => {
               <div className="flex justify-between items-start">
                 <div className="flex items-center gap-3">
                   <div className="w-12 h-12 rounded-lg bg-blue-50 flex items-center justify-center text-blue-600">
-                    <Building2 size={24} />
+                    <Building size={24} />
                   </div>
                   <div>
                     <h3 className="font-bold text-gray-900">{s.name}</h3>

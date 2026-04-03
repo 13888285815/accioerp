@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { Plus, Search, Edit2, Trash2, MapPin, Phone, Building2, User } from 'lucide-react';
+import { Plus, Search, Pencil, Trash, MapPin, Phone, Building, User } from 'lucide-react';
 import { store } from '../../store';
 import { Warehouse, StatusActive } from '../../types';
 import { Button } from '../../components/ui/Button';
@@ -128,7 +128,7 @@ const Warehouses: React.FC = () => {
                   <td className="px-6 py-4">
                     <div className="flex items-center gap-3">
                       <div className="w-8 h-8 rounded-lg bg-blue-50 flex items-center justify-center text-blue-600">
-                        <Building2 size={16} />
+                        <Building size={16} />
                       </div>
                       <span className="font-bold text-gray-800">{w.name}</span>
                     </div>
@@ -184,13 +184,13 @@ const Warehouses: React.FC = () => {
                         onClick={() => handleOpenModal(w)}
                         className="p-2 text-gray-400 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all"
                       >
-                        <Edit2 size={16} />
+                        <Pencil size={16} />
                       </button>
                       <button 
                         onClick={() => handleDelete(w.id)}
                         className="p-2 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-all"
                       >
-                        <Trash2 size={16} />
+                        <Trash size={16} />
                       </button>
                     </div>
                   </td>

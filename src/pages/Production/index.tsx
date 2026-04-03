@@ -1,8 +1,8 @@
 import React, { useState, useMemo } from 'react';
 import { 
-  Plus, Search, Edit2, Trash2, LayoutGrid, ClipboardCheck, 
+  Plus, Search, Pencil, Trash, LayoutGrid, ClipboardCheck, 
   Settings, Clock, Activity, Target, Layers, 
-  ArrowRight, CheckCircle2, AlertCircle, Calendar
+  ArrowRight, CheckCircle, AlertCircle, Calendar
 } from 'lucide-react';
 import { erpStore } from '../../store/erp';
 import { store } from '../../store';
@@ -309,7 +309,7 @@ const ProductionPage: React.FC = () => {
             </div>
             <div className="bg-white p-4 rounded-xl border border-gray-100 shadow-sm flex items-center gap-4">
               <div className="w-12 h-12 rounded-lg bg-green-50 flex items-center justify-center text-green-600">
-                <CheckCircle2 size={24} />
+                <CheckCircle size={24} />
               </div>
               <div>
                 <p className="text-sm text-gray-500">已完成</p>
@@ -387,7 +387,7 @@ const ProductionPage: React.FC = () => {
                             onClick={() => handleOpenPlanModal(plan)}
                             className="p-1.5 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
                           >
-                            <Edit2 size={16} />
+                            <Pencil size={16} />
                           </button>
                         </div>
                       </td>
@@ -424,7 +424,7 @@ const ProductionPage: React.FC = () => {
             </div>
             <div className="bg-white p-4 rounded-xl border border-gray-100 shadow-sm flex items-center gap-4">
               <div className="w-12 h-12 rounded-lg bg-green-50 flex items-center justify-center text-green-600">
-                <CheckCircle2 size={24} />
+                <CheckCircle size={24} />
               </div>
               <div>
                 <p className="text-sm text-gray-500">已完成</p>
@@ -501,7 +501,7 @@ const ProductionPage: React.FC = () => {
                             onClick={() => handleOpenWoModal(wo)}
                             className="p-1.5 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
                           >
-                            <Edit2 size={16} />
+                            <Pencil size={16} />
                           </button>
                         </div>
                       </td>

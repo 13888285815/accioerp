@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { Plus, Search, Edit2, Trash2, Filter, Warehouse } from 'lucide-react';
+import { Plus, Search, Pencil, Trash, Filter, Warehouse } from 'lucide-react';
 import { store } from '../../store';
 import { Order, OrderStatus } from '../../types';
 import { Button } from '../../components/ui/Button';
@@ -195,10 +195,10 @@ const OrdersPage: React.FC = () => {
                   <td className="px-6 py-4 text-right">
                     <div className="flex justify-end gap-2">
                       <button onClick={() => handleOpenEdit(item)} className="p-1.5 text-gray-400 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors">
-                        <Edit2 size={16} />
+                        <Pencil size={16} />
                       </button>
                       <button onClick={() => handleDelete(item.id)} className="p-1.5 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors">
-                        <Trash2 size={16} />
+                        <Trash size={16} />
                       </button>
                     </div>
                   </td>

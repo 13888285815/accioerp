@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { Plus, Search, Edit2, Trash2, Filter, Package, AlertTriangle, CheckCircle2, MoreHorizontal, LayoutGrid } from 'lucide-react';
+import { Plus, Search, Pencil, Trash, Filter, Package, AlertTriangle, CheckCircle, MoreHorizontal, LayoutGrid } from 'lucide-react';
 import { store } from '../../store';
 import { InventoryItem, StockStatus } from '../../types';
 import { Button } from '../../components/ui/Button';
@@ -220,7 +220,7 @@ const Inventory: React.FC = () => {
                       )}
                       {status === 'normal' && (
                         <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold bg-green-50 text-green-600">
-                          <CheckCircle2 size={12} />
+                          <CheckCircle size={12} />
                           正常
                         </span>
                       )}
@@ -231,13 +231,13 @@ const Inventory: React.FC = () => {
                           onClick={() => handleOpenModal(item)}
                           className="p-2 text-gray-400 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all"
                         >
-                          <Edit2 size={16} />
+                          <Pencil size={16} />
                         </button>
                         <button 
                           onClick={() => handleDelete(item.id)}
                           className="p-2 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-all"
                         >
-                          <Trash2 size={16} />
+                          <Trash size={16} />
                         </button>
                       </div>
                     </td>

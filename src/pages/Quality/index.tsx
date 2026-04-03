@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ShieldCheck, Plus, Search, CheckCircle, XCircle, AlertTriangle, ClipboardCheck, Eye } from 'lucide-react';
+import { Shield, Plus, Search, CheckCircle, XCircle, AlertTriangle, ClipboardCheck, Eye } from 'lucide-react';
 import { useRefresh } from '../../store/reactive';
 
 interface QualityRecord {
@@ -97,7 +97,7 @@ export default function QualityPage() {
           { label: '合格', value: stats.pass, icon: CheckCircle, color: 'text-green-600', bg: 'bg-green-50' },
           { label: '不合格', value: stats.fail, icon: XCircle, color: 'text-red-600', bg: 'bg-red-50' },
           { label: '待检', value: stats.pending, icon: AlertTriangle, color: 'text-yellow-600', bg: 'bg-yellow-50' },
-          { label: '合格率', value: `${stats.passRate}%`, icon: ShieldCheck, color: 'text-indigo-600', bg: 'bg-indigo-50' },
+          { label: '合格率', value: `${stats.passRate}%`, icon: Shield, color: 'text-indigo-600', bg: 'bg-indigo-50' },
         ].map(s => (
           <div key={s.label} className="bg-white rounded-2xl shadow-sm p-4 flex items-center gap-3">
             <div className={`w-10 h-10 ${s.bg} rounded-xl flex items-center justify-center flex-shrink-0`}>

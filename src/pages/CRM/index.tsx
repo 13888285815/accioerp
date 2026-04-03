@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { Plus, Search, Edit2, Trash2, Filter, User, Building2, Phone, Mail, MapPin, Tag, FileText, TrendingUp, Users, DollarSign, Calendar, LayoutGrid, Layers, Briefcase } from 'lucide-react';
+import { Plus, Search, Pencil, Trash, Filter, User, Building, Phone, Mail, MapPin, Tag, FileText, TrendingUp, Users, DollarSign, Calendar, LayoutGrid, Layers, Briefcase } from 'lucide-react';
 import { Badge } from '../../components/ui/Badge';
 import { Button } from '../../components/ui/Button';
 import { Input, Select } from '../../components/ui/Input';
@@ -358,10 +358,10 @@ const CRMPage: React.FC = () => {
                     <td className="px-6 py-4 text-right">
                       <div className="flex justify-end gap-2">
                         <button onClick={() => { setEditingCust(c); setIsCustModalOpen(true); }} className="p-1 text-blue-600 hover:bg-blue-50 rounded transition-colors">
-                          <Edit2 size={16} />
+                          <Pencil size={16} />
                         </button>
                         <button onClick={() => deleteCustomer(c.id)} className="p-1 text-red-600 hover:bg-red-50 rounded transition-colors">
-                          <Trash2 size={16} />
+                          <Trash size={16} />
                         </button>
                       </div>
                     </td>
@@ -431,7 +431,7 @@ const CRMPage: React.FC = () => {
                         <div className="flex justify-between items-start mb-2">
                           <h3 className="font-bold text-gray-900 text-sm">{opp.title}</h3>
                           <button onClick={() => { setEditingOpp(opp); setProbValue(opp.probability); setIsOppModalOpen(true); }} className="text-gray-400 hover:text-blue-600">
-                            <Edit2 size={14} />
+                            <Pencil size={14} />
                           </button>
                         </div>
                         <div className="text-xs text-gray-500 mb-3">{opp.customerName}</div>
@@ -529,10 +529,10 @@ const CRMPage: React.FC = () => {
                     <td className="px-6 py-4 text-right">
                       <div className="flex justify-end gap-2">
                         <button onClick={() => { setEditingCon(con); setIsConModalOpen(true); }} className="p-1 text-blue-600 hover:bg-blue-50 rounded transition-colors">
-                          <Edit2 size={16} />
+                          <Pencil size={16} />
                         </button>
                         <button onClick={() => { if(confirm('确定删除吗？')){ erpStore.deleteContract(con.id); refresh(); } }} className="p-1 text-red-600 hover:bg-red-50 rounded transition-colors">
-                          <Trash2 size={16} />
+                          <Trash size={16} />
                         </button>
                       </div>
                     </td>

@@ -1,8 +1,9 @@
 import React from 'react';
 import {
   LayoutDashboard, Warehouse, Package, ArrowDownToLine, ArrowUpFromLine,
-  ShoppingCart, Truck, Users, BarChart3, Settings, X, LogOut, CreditCard,
-  Zap, DollarSign, UserCheck, Handshake, ClipboardList, Factory, ChevronRight
+  ShoppingCart, Truck, Users, BarChart, Settings, X, LogOut, CreditCard,
+  Zap, DollarSign, UserCheck, Handshake, ClipboardList, Factory, ChevronRight, Shield,
+  Tag, ScanLine, GitBranch
 } from 'lucide-react';
 import { User } from '../../types';
 import { subscriptionStore } from '../../store/subscription';
@@ -42,7 +43,7 @@ const navGroups = [
       { label: '客户关系', icon: Handshake, page: 'crm' },
       { label: '采购管理', icon: ClipboardList, page: 'purchase' },
       { label: '生产管理', icon: Factory, page: 'production' },
-      { label: '质量管理', icon: ShieldCheck, page: 'quality' },
+      { label: '质量管理', icon: Shield, page: 'quality' },
       { label: '价格管理', icon: Tag, page: 'price' },
       { label: '盘点管理', icon: ScanLine, page: 'stocktake' },
       { label: '流程管理', icon: GitBranch, page: 'workflow' },
@@ -51,7 +52,7 @@ const navGroups = [
   {
     label: '系统',
     items: [
-      { label: '报表中心', icon: BarChart3, page: 'reports' },
+      { label: '报表中心', icon: BarChart, page: 'reports' },
       { label: '用户管理', icon: Users, page: 'users' },
       { label: '系统设置', icon: Settings, page: 'settings' },
     ],

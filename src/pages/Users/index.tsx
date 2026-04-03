@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { Plus, Search, Edit2, Trash2, Shield, User as UserIcon } from 'lucide-react';
+import { Plus, Search, Pencil, Trash, Shield, User as UserIcon } from 'lucide-react';
 import { store } from '../../store';
 import { User as UserType, UserRole, StatusActive, Warehouse } from '../../types';
 import { Button } from '../../components/ui/Button';
@@ -212,13 +212,13 @@ const UsersPage: React.FC = () => {
                         onClick={() => handleOpenModal(user)}
                         className="p-1.5 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
                       >
-                        <Edit2 size={16} />
+                        <Pencil size={16} />
                       </button>
                       <button 
                         onClick={() => handleDelete(user.id)}
                         className="p-1.5 text-red-600 hover:bg-red-50 rounded-lg transition-colors"
                       >
-                        <Trash2 size={16} />
+                        <Trash size={16} />
                       </button>
                     </div>
                   </td>
