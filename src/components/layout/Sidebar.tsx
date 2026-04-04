@@ -7,6 +7,7 @@ import {
   ShoppingBag, Percent, Building2, PieChart, Database, FileBarChart,
   Network, KeyRound, Key, BarChart2, Lock, ChevronDown,
   Layers, Navigation, Globe, Package2, MapPin, Route, Grid, FolderTree, ReceiptText, Receipt, Calculator,
+  Crown, Wrench, Cpu, Landmark, BookOpen, Wallet, ArrowRightLeft, Satellite, Map,
 } from 'lucide-react';
 import { User } from '../../types';
 import { subscriptionStore } from '../../store/subscription';
@@ -74,12 +75,29 @@ const navGroups: NavGroup[] = [
     ],
   },
   {
+    label: '调拨管理',
+    collapsible: true,
+    items: [
+      { label: '调拨管理', icon: ArrowRightLeft, page: 'transfer' },
+    ],
+  },
+  {
+    label: '会员与服务',
+    collapsible: true,
+    items: [
+      { label: '会员管理', icon: Crown, page: 'member' },
+      { label: '维护管理', icon: Wrench, page: 'maintenance' },
+    ],
+  },
+  {
     label: '财税管理',
     collapsible: true,
     items: [
       { label: '凭证管理', icon: ReceiptText, page: 'voucher' },
       { label: '发票管理', icon: Receipt, page: 'invoice' },
       { label: '税务管理', icon: Calculator, page: 'tax' },
+      { label: '会计管理', icon: BookOpen, page: 'accounting' },
+      { label: '资金管理', icon: Wallet, page: 'fundmgmt' },
     ],
   },
   {
@@ -94,6 +112,7 @@ const navGroups: NavGroup[] = [
       { label: '质量管理', icon: Shield, page: 'quality' },
       { label: '合同管理', icon: FileText, page: 'contracts' },
       { label: '流程管理', icon: GitBranch, page: 'workflow' },
+      { label: '资产管理', icon: Landmark, page: 'assets' },
     ],
   },
   {
@@ -117,9 +136,19 @@ const navGroups: NavGroup[] = [
     ],
   },
   {
+    label: '物流与导航',
+    collapsible: true,
+    items: [
+      { label: '路线管理', icon: Route, page: 'routemgmt' },
+      { label: '地图管理', icon: Map, page: 'mapview' },
+      { label: '卫星导航', icon: Satellite, page: 'satnav' },
+    ],
+  },
+  {
     label: '系统',
     collapsible: true,
     items: [
+      { label: '进程管理', icon: Cpu, page: 'processmgr' },
       { label: 'Token 管理', icon: Zap, page: 'tokenmgr' },
       { label: 'API Key 管理', icon: Key, page: 'apikeys' },
       { label: '系统设置', icon: Settings, page: 'settings' },

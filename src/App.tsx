@@ -64,6 +64,18 @@ import VoucherPage from './pages/Voucher';
 import InvoicePage from './pages/Invoice';
 import TaxPage from './pages/Tax';
 
+// New Batch 3 Pages
+import MemberPage from './pages/Member';
+import MaintenancePage from './pages/Maintenance';
+import ProcessMgrPage from './pages/ProcessMgr';
+import AssetsPage from './pages/Assets';
+import AccountingPage from './pages/Accounting';
+import FundManagementPage from './pages/FundManagement';
+import TransferPage from './pages/Transfer';
+import RouteManagementPage from './pages/RouteManagement';
+import MapViewPage from './pages/MapView';
+import SatNavPage from './pages/SatNav';
+
 type Page =
   | 'dashboard' | 'warehouses' | 'inventory' | 'inbound' | 'outbound'
   | 'orders' | 'suppliers' | 'users' | 'reports' | 'settings' | 'subscription'
@@ -76,7 +88,10 @@ type Page =
   | 'category' | 'crossborder' | 'consignment' | 'intransit'
   | 'delivery' | 'logistics' | 'transport' | 'spacemanagement'
   | 'autowarehouse' | 'sorting' | 'processing' | 'packaging'
-  | 'voucher' | 'invoice' | 'tax';
+  | 'voucher' | 'invoice' | 'tax'
+  | 'member' | 'maintenance' | 'processmgr' | 'assets'
+  | 'accounting' | 'fundmgmt' | 'transfer'
+  | 'routemgmt' | 'mapview' | 'satnav';
 
 const pageTitles: Record<string, string> = {
   dashboard: '工作台',
@@ -129,6 +144,16 @@ const pageTitles: Record<string, string> = {
   voucher: '凭证管理',
   invoice: '发票管理',
   tax: '税务管理',
+  member: '会员管理',
+  maintenance: '维护管理',
+  processmgr: '进程管理',
+  assets: '资产管理',
+  accounting: '会计管理',
+  fundmgmt: '资金管理',
+  transfer: '调拨管理',
+  routemgmt: '路线管理',
+  mapview: '地图管理',
+  satnav: '卫星导航',
 };
 
 function App() {
@@ -209,6 +234,17 @@ function App() {
       case 'voucher':        return <VoucherPage />;
       case 'invoice':        return <InvoicePage />;
       case 'tax':            return <TaxPage />;
+      // Batch 3
+      case 'member':         return <MemberPage />;
+      case 'maintenance':    return <MaintenancePage />;
+      case 'processmgr':     return <ProcessMgrPage />;
+      case 'assets':         return <AssetsPage />;
+      case 'accounting':     return <AccountingPage />;
+      case 'fundmgmt':       return <FundManagementPage />;
+      case 'transfer':       return <TransferPage />;
+      case 'routemgmt':      return <RouteManagementPage />;
+      case 'mapview':        return <MapViewPage />;
+      case 'satnav':         return <SatNavPage />;
       default:               return <DashboardPage />;
     }
   };
