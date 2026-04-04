@@ -47,6 +47,23 @@ import PermissionsPage from './pages/Permissions';
 import TokenMgrPage from './pages/TokenMgr';
 import ApiKeysPage from './pages/ApiKeys';
 
+// New Batch 2 Pages
+import CategoryPage from './pages/Category';
+import CrossBorderPage from './pages/CrossBorder';
+import ConsignmentPage from './pages/Consignment';
+import InTransitPage from './pages/InTransit';
+import DeliveryPage from './pages/Delivery';
+import LogisticsPage from './pages/Logistics';
+import TransportPage from './pages/Transport';
+import SpaceManagementPage from './pages/SpaceManagement';
+import AutoWarehousePage from './pages/AutoWarehouse';
+import SortingPage from './pages/Sorting';
+import ProcessingPage from './pages/Processing';
+import PackagingPage from './pages/Packaging';
+import VoucherPage from './pages/Voucher';
+import InvoicePage from './pages/Invoice';
+import TaxPage from './pages/Tax';
+
 type Page =
   | 'dashboard' | 'warehouses' | 'inventory' | 'inbound' | 'outbound'
   | 'orders' | 'suppliers' | 'users' | 'reports' | 'settings' | 'subscription'
@@ -55,7 +72,11 @@ type Page =
   | 'masterconsole' | 'products' | 'contracts' | 'cashier'
   | 'retail' | 'promotions' | 'wholesale'
   | 'chartanalysis' | 'datacenter' | 'reportcenter'
-  | 'orgstructure' | 'roles' | 'permissions' | 'tokenmgr' | 'apikeys';
+  | 'orgstructure' | 'roles' | 'permissions' | 'tokenmgr' | 'apikeys'
+  | 'category' | 'crossborder' | 'consignment' | 'intransit'
+  | 'delivery' | 'logistics' | 'transport' | 'spacemanagement'
+  | 'autowarehouse' | 'sorting' | 'processing' | 'packaging'
+  | 'voucher' | 'invoice' | 'tax';
 
 const pageTitles: Record<string, string> = {
   dashboard: '工作台',
@@ -93,6 +114,21 @@ const pageTitles: Record<string, string> = {
   permissions: '权限管理',
   tokenmgr: 'Token 管理',
   apikeys: 'API Key 管理',
+  category: '分类管理',
+  crossborder: '跨境电商',
+  consignment: '寄售管理',
+  intransit: '在途管理',
+  delivery: '配送管理',
+  logistics: '物流管理',
+  transport: '运输管理',
+  spacemanagement: '空间管理',
+  autowarehouse: '立体仓库',
+  sorting: '分拣管理',
+  processing: '加工管理',
+  packaging: '包装管理',
+  voucher: '凭证管理',
+  invoice: '发票管理',
+  tax: '税务管理',
 };
 
 function App() {
@@ -157,6 +193,22 @@ function App() {
       case 'permissions':    return <PermissionsPage />;
       case 'tokenmgr':       return <TokenMgrPage />;
       case 'apikeys':        return <ApiKeysPage />;
+      // Batch 2
+      case 'category':       return <CategoryPage />;
+      case 'crossborder':    return <CrossBorderPage />;
+      case 'consignment':    return <ConsignmentPage />;
+      case 'intransit':      return <InTransitPage />;
+      case 'delivery':       return <DeliveryPage />;
+      case 'logistics':      return <LogisticsPage />;
+      case 'transport':      return <TransportPage />;
+      case 'spacemanagement': return <SpaceManagementPage />;
+      case 'autowarehouse':  return <AutoWarehousePage />;
+      case 'sorting':        return <SortingPage />;
+      case 'processing':     return <ProcessingPage />;
+      case 'packaging':      return <PackagingPage />;
+      case 'voucher':        return <VoucherPage />;
+      case 'invoice':        return <InvoicePage />;
+      case 'tax':            return <TaxPage />;
       default:               return <DashboardPage />;
     }
   };
