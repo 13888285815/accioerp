@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   LayoutDashboard, Warehouse, Package, ArrowDownToLine, ArrowUpFromLine,
   ShoppingCart, Truck, Users, BarChart, Settings, X, LogOut, CreditCard,
-  Zap, DollarSign, UserCheck, Handshake, ClipboardList, Factory, ChevronRight, Shield,
-  Tag, ScanLine, GitBranch
+  Zap, DollarSign, UserCheck, Handshake, ClipboardList, Factory, ChevronRight,
+  Shield, Tag, ScanLine, GitBranch, Monitor, Box, FileText, CreditCard as Cashier,
+  ShoppingBag, Percent, Building2, PieChart, Database, FileBarChart,
+  Network, KeyRound, Key, BarChart2, Lock, ChevronDown,
 } from 'lucide-react';
 import { User } from '../../types';
 import { subscriptionStore } from '../../store/subscription';
@@ -17,11 +19,15 @@ interface SidebarProps {
   onClose: () => void;
 }
 
-const navGroups = [
+interface NavItem { label: string; icon: React.ElementType; page: string; }
+interface NavGroup { label: string; items: NavItem[]; collapsible?: boolean; }
+
+const navGroups: NavGroup[] = [
   {
-    label: '工作台',
+    label: '主控台',
     items: [
       { label: '工作台', icon: LayoutDashboard, page: 'dashboard' },
+      { label: '主控制台', icon: Monitor, page: 'masterconsole' },
     ],
   },
   {
@@ -33,10 +39,24 @@ const navGroups = [
       { label: '出库管理', icon: ArrowUpFromLine, page: 'outbound' },
       { label: '销售订单', icon: ShoppingCart, page: 'orders' },
       { label: '供应商', icon: Truck, page: 'suppliers' },
+      { label: '盘点管理', icon: ScanLine, page: 'stocktake' },
+    ],
+  },
+  {
+    label: '商品与销售',
+    collapsible: true,
+    items: [
+      { label: '商品管理', icon: Box, page: 'products' },
+      { label: '零售管理', icon: ShoppingBag, page: 'retail' },
+      { label: '批发管理', icon: Building2, page: 'wholesale' },
+      { label: '促销管理', icon: Percent, page: 'promotions' },
+      { label: '价格管理', icon: Tag, page: 'price' },
+      { label: '收银管理', icon: Cashier, page: 'cashier' },
     ],
   },
   {
     label: '企业管理 ERP',
+    collapsible: true,
     items: [
       { label: '财务管理', icon: DollarSign, page: 'finance' },
       { label: '人力资源', icon: UserCheck, page: 'hr' },
@@ -44,16 +64,36 @@ const navGroups = [
       { label: '采购管理', icon: ClipboardList, page: 'purchase' },
       { label: '生产管理', icon: Factory, page: 'production' },
       { label: '质量管理', icon: Shield, page: 'quality' },
-      { label: '价格管理', icon: Tag, page: 'price' },
-      { label: '盘点管理', icon: ScanLine, page: 'stocktake' },
+      { label: '合同管理', icon: FileText, page: 'contracts' },
       { label: '流程管理', icon: GitBranch, page: 'workflow' },
     ],
   },
   {
-    label: '系统',
+    label: '数据与报表',
+    collapsible: true,
     items: [
+      { label: '图表分析', icon: PieChart, page: 'chartanalysis' },
       { label: '报表中心', icon: BarChart, page: 'reports' },
+      { label: '报表管理', icon: FileBarChart, page: 'reportcenter' },
+      { label: '数据中心', icon: Database, page: 'datacenter' },
+    ],
+  },
+  {
+    label: '组织与权限',
+    collapsible: true,
+    items: [
+      { label: '组织机构', icon: Network, page: 'orgstructure' },
       { label: '用户管理', icon: Users, page: 'users' },
+      { label: '角色管理', icon: KeyRound, page: 'roles' },
+      { label: '权限管理', icon: Lock, page: 'permissions' },
+    ],
+  },
+  {
+    label: '系统',
+    collapsible: true,
+    items: [
+      { label: 'Token 管理', icon: Zap, page: 'tokenmgr' },
+      { label: 'API Key 管理', icon: Key, page: 'apikeys' },
       { label: '系统设置', icon: Settings, page: 'settings' },
     ],
   },
@@ -78,6 +118,18 @@ export const Sidebar: React.FC<SidebarProps> = ({
   const plan = subscriptionStore.getCurrentPlan();
   const tokens = subscriptionStore.getTokensAvailable();
 
+  // 默认展开包含当前页面的分组
+  const defaultCollapsed = navGroups.reduce((acc, g) => {
+    if (g.collapsible) {
+      const hasActive = g.items.some(i => i.page === currentPage);
+      acc[g.label] = !hasActive;
+    }
+    return acc;
+  }, {} as Record<string, boolean>);
+
+  const [collapsed, setCollapsed] = useState<Record<string, boolean>>(defaultCollapsed);
+  const toggleGroup = (label: string) => setCollapsed(c => ({ ...c, [label]: !c[label] }));
+
   return (
     <>
       {isOpen && (
@@ -89,7 +141,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
       )}
       <aside
         className={`
-          fixed top-0 left-0 h-full w-64 bg-gray-900 text-white z-40
+          fixed top-0 left-0 h-full w-60 bg-gray-900 text-white z-40
           flex flex-col transition-transform duration-300
           ${isOpen ? 'translate-x-0' : '-translate-x-full'}
           lg:translate-x-0 lg:relative lg:z-auto
@@ -97,13 +149,13 @@ export const Sidebar: React.FC<SidebarProps> = ({
         aria-label="Main navigation"
       >
         {/* Logo */}
-        <div className="flex items-center justify-between p-5 border-b border-gray-800">
+        <div className="flex items-center justify-between px-4 py-4 border-b border-gray-800">
           <div className="flex items-center gap-3">
             <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-lg flex items-center justify-center flex-shrink-0">
               <Factory size={16} />
             </div>
             <div>
-              <span className="font-bold text-base tracking-tight">ERP Cloud</span>
+              <span className="font-bold text-base tracking-tight">意念ERP</span>
               <div className="text-[10px] text-gray-500 leading-none">企业资源管理系统</div>
             </div>
           </div>
@@ -117,40 +169,49 @@ export const Sidebar: React.FC<SidebarProps> = ({
         </div>
 
         {/* Nav Groups */}
-        <nav className="flex-1 py-3 overflow-y-auto no-scrollbar" role="navigation">
-          {navGroups.map((group) => (
-            <div key={group.label} className="mb-1">
-              {/* Group Header */}
-              <div className="px-4 py-1.5">
-                <span className="text-[10px] font-semibold text-gray-500 uppercase tracking-wider">
-                  {group.label}
-                </span>
-              </div>
-              {/* Group Items */}
-              {group.items.map(({ label, icon: Icon, page }) => (
-                <button
-                  key={page}
-                  onClick={() => { onNavigate(page); onClose(); }}
-                  className={`
-                    w-full flex items-center gap-3 px-3 py-2 mx-1 rounded-lg text-sm font-medium
-                    transition-all duration-150 mb-0.5 w-[calc(100%-8px)]
-                    ${currentPage === page
-                      ? 'bg-blue-600 text-white shadow-lg shadow-blue-900/30'
-                      : 'text-gray-400 hover:bg-gray-800 hover:text-white'
-                    }
-                  `}
+        <nav className="flex-1 py-2 overflow-y-auto no-scrollbar" role="navigation">
+          {navGroups.map((group) => {
+            const isCollapsed = group.collapsible ? (collapsed[group.label] ?? false) : false;
+            return (
+              <div key={group.label} className="mb-0.5">
+                {/* Group Header */}
+                <div
+                  className={`flex items-center justify-between px-4 py-1.5 ${group.collapsible ? 'cursor-pointer hover:bg-gray-800/50 rounded mx-1' : ''}`}
+                  onClick={group.collapsible ? () => toggleGroup(group.label) : undefined}
                 >
-                  <Icon size={16} className="flex-shrink-0" />
-                  <span className="truncate flex-1 text-left">{label}</span>
-                  {currentPage === page && <ChevronRight size={12} className="flex-shrink-0 opacity-60" />}
-                </button>
-              ))}
-            </div>
-          ))}
+                  <span className="text-[10px] font-semibold text-gray-500 uppercase tracking-wider">
+                    {group.label}
+                  </span>
+                  {group.collapsible && (
+                    <ChevronDown size={11} className={`text-gray-600 transition-transform ${isCollapsed ? '-rotate-90' : ''}`} />
+                  )}
+                </div>
+                {/* Group Items */}
+                {!isCollapsed && group.items.map(({ label, icon: Icon, page }) => (
+                  <button
+                    key={page}
+                    onClick={() => { onNavigate(page); onClose(); }}
+                    className={`
+                      w-[calc(100%-8px)] mx-1 flex items-center gap-2.5 px-3 py-2 rounded-lg text-sm font-medium
+                      transition-all duration-150 mb-0.5
+                      ${currentPage === page
+                        ? 'bg-blue-600 text-white shadow-lg shadow-blue-900/30'
+                        : 'text-gray-400 hover:bg-gray-800 hover:text-white'
+                      }
+                    `}
+                  >
+                    <Icon size={15} className="flex-shrink-0" />
+                    <span className="truncate flex-1 text-left">{label}</span>
+                    {currentPage === page && <ChevronRight size={11} className="flex-shrink-0 opacity-60" />}
+                  </button>
+                ))}
+              </div>
+            );
+          })}
         </nav>
 
         {/* Footer */}
-        <div className="p-3 border-t border-gray-800 space-y-3">
+        <div className="p-3 border-t border-gray-800 space-y-2.5">
           {/* Plan & Tokens */}
           <div className="bg-gray-800/60 rounded-xl p-3 space-y-2">
             <div className="flex items-center justify-between">
