@@ -6,6 +6,7 @@ import {
   Shield, Tag, ScanLine, GitBranch, Monitor, Box, FileText, CreditCard as Cashier,
   ShoppingBag, Percent, Building2, PieChart, Database, FileBarChart,
   Network, KeyRound, Key, BarChart2, Lock, ChevronDown,
+  Layers, Navigation, Globe, Package2, MapPin, Route, Grid, FolderTree, ReceiptText, Receipt, Calculator,
 } from 'lucide-react';
 import { User } from '../../types';
 import { subscriptionStore } from '../../store/subscription';
@@ -40,6 +41,22 @@ const navGroups: NavGroup[] = [
       { label: '销售订单', icon: ShoppingCart, page: 'orders' },
       { label: '供应商', icon: Truck, page: 'suppliers' },
       { label: '盘点管理', icon: ScanLine, page: 'stocktake' },
+      { label: '分类管理', icon: FolderTree, page: 'category' },
+      { label: '空间管理', icon: Grid, page: 'spacemanagement' },
+      { label: '立体仓库', icon: Layers, page: 'autowarehouse' },
+    ],
+  },
+  {
+    label: '仓储作业',
+    collapsible: true,
+    items: [
+      { label: '分拣管理', icon: ScanLine, page: 'sorting' },
+      { label: '加工管理', icon: Factory, page: 'processing' },
+      { label: '包装管理', icon: Package2, page: 'packaging' },
+      { label: '在途管理', icon: Route, page: 'intransit' },
+      { label: '配送管理', icon: Navigation, page: 'delivery' },
+      { label: '物流管理', icon: MapPin, page: 'logistics' },
+      { label: '运输管理', icon: Truck, page: 'transport' },
     ],
   },
   {
@@ -52,6 +69,17 @@ const navGroups: NavGroup[] = [
       { label: '促销管理', icon: Percent, page: 'promotions' },
       { label: '价格管理', icon: Tag, page: 'price' },
       { label: '收银管理', icon: Cashier, page: 'cashier' },
+      { label: '跨境电商', icon: Globe, page: 'crossborder' },
+      { label: '寄售管理', icon: Handshake, page: 'consignment' },
+    ],
+  },
+  {
+    label: '财税管理',
+    collapsible: true,
+    items: [
+      { label: '凭证管理', icon: ReceiptText, page: 'voucher' },
+      { label: '发票管理', icon: Receipt, page: 'invoice' },
+      { label: '税务管理', icon: Calculator, page: 'tax' },
     ],
   },
   {
